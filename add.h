@@ -23,6 +23,7 @@ int add()
 		exit(0);
 	}
 
+	//Option 1 to add data in the file
     if(n==1){
 		system("clear");
 		printf("\n");	
@@ -42,13 +43,16 @@ int add()
 	printf("\n%d\t%s\t%s\t%d",st.stid,st.name,st.sec,st.marks);
 	}
 }
+
+	//Option 2 to Search for the  data in the file
+
 	else if(n==2){
 		system("clear");
 		printf("Enter the ID of the student you are searching for: ");
 		scanf("%d",&search);
 		printf("\n\nID\tNAME\tSECTION\tMARKS\n");
 		while(fread(&st,sizeof(st),1,fptr)==1){
-			if(search==st.stid){
+			if(search==fread(&st,sizeof(st),1,fptr)){
 				printf("\n%d\t%s\t%s\t%d",st.stid,st.name,st.sec,st.marks);
 			}
 			else{
@@ -58,14 +62,18 @@ int add()
 		}
 	}
 
-	else if(n==5){
+	//Option 4 to Show  the  data in the file
+
+	else if(n==4){
 		printf("\n\nID\tNAME\tSECTION\tMARKS\n");
 		while (fread(&st,sizeof(st),1,fptr)==1){
 			printf("\n%d\t%s\t%s\t%d",st.stid,st.name,st.sec,st.marks);
 	}
 	}
+	
+	//Option 5 to exit the program
 
-    else if(n==4){
+    else if(n==5){
         system("clear");
 		system("^C");
         system("clear");
@@ -74,6 +82,5 @@ int add()
 
 
 fclose(fptr);
-printf("\n\n");
 
 }
