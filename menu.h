@@ -12,7 +12,7 @@ int menu()
 	printf("\t\t\t2.Search for a Record.\n");
 	printf("\t\t\t3.Delete a Record.\n");
 	printf("\t\t\t4.To end the Program.\n");
-    printf("\n\t...........Press any button to check the  Record...........\n");
+    printf("\t\t\t5.To check the Record.\n");
 	printf("--> ");
 	scanf("%d",&n);
 }	
