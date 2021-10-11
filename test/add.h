@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int n,search,delete;
+int n,search,tr,delete;
 int  num=0;
 
 struct  student
@@ -17,7 +17,7 @@ int add()
 {
     struct student st;
 
-	FILE *fptr;
+	FILE *fptr;  	
 	FILE *cfptr;
 	
 	//To open two files one where the data is stotred and the other where data is stored temporarily
@@ -74,10 +74,12 @@ int add()
 			}
 			if(n==0){
 			printf("\nNo record found for that ID\n");       //If the search is not in the file than its says the command
-					}
+			}
 		}
 	
 	}
+	
+	
 
 	//Option 3 to delete a data from the file 
 	else if(n==3){
@@ -89,6 +91,7 @@ int add()
 			if(delete != st.stid){                                //If the user input meets the data in the line than it skips the line
 				fwrite(&st,sizeof(st),1,cfptr);
 				printf("The data was removed successfully");
+				break;
 			}
 		}
 	remove("file.txt");                                       //Removes the file file which stores the data
@@ -116,6 +119,26 @@ int add()
         system("exit");
     }
 
+	
+	else if(n==6){
+		system("clear");
+		printf("Enter the ID of the student you are searching for: ");
+		scanf("%d",&search);
+		printf("Enter the amount you want to transfer : Rs. ");
+		scanf("%d",&tr);
+		printf("\n\nID\tNAME\tSECTION\tMARKS\n");
+		while(fread(&st,sizeof(st),1,fptr)==1){
+			if(search==st.stid){                             	//If the search in user input is in the line than only it prints the data
+				
+				printf("%d\t%s\t%s\t%d\n",st.stid,st.name,st.sec,st.marks+tr); 
+				n++;                                     			//To check weather we got the search data or not
+			}
+			if(n==0){
+			printf("\nNo record found for that ID\n");       //If the search is not in the file than its says the command
+			}
+		}
+	
+	}
 	//If any other option 
 	else{
 		printf("No option available for that key");

@@ -1,13 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include "menu.h"
 #include "add.h"
 
 int main(){
-		char in[15];
+
+	FILE *pwd;
+
+	fopen("password.txt","a+");
+
+	char in[15];
 	char pass[15]={"Pranab"};
 	int value,count=0;
+
+	
 	
 	key:
 	if(count<5){
@@ -26,7 +34,7 @@ int main(){
 	while(1){
 	if(value==0){
 	menu();
-	add(n);
+	add();
 	goto end;
 	}
 	else{
